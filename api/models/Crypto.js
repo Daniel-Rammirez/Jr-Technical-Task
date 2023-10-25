@@ -7,6 +7,7 @@ const CryptoSchema = new Schema({
   max_supply: Number,
   cmc_rank: Number,
   quote: Object,
+  id: Number,
 });
 
 const CryptoModel = mongoose.model("Crypto", CryptoSchema);

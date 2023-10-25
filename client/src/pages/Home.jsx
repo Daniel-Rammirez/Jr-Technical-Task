@@ -23,7 +23,6 @@ export function Home() {
       console.log(ex);
     }
   };
-  console.log(data);
   // function for register crypto in mongodb
   const registerCrypto = async (crypto) => {
     // console.log(crypto);
@@ -32,6 +31,7 @@ export function Home() {
     const signal = crypto.signal;
     const cmc_rank = crypto.cmc_rank;
     const quote = crypto.quote;
+    const id = crypto.id;
     try {
       await axios.post("/register", {
         symbol,
@@ -39,6 +39,7 @@ export function Home() {
         signal,
         cmc_rank,
         quote,
+        id,
       });
       console.log("Registration successful");
     } catch (error) {
@@ -47,7 +48,6 @@ export function Home() {
   };
 
   const handleClick = (e) => {
-    console.log(e.target.value);
     const index = e.target.value;
     registerCrypto(data[index - 1]);
   };

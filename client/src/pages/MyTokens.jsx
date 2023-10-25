@@ -8,29 +8,27 @@ export function MyTokens() {
 
   const getMongoCryptos = async () => {
     const response = await axios.get("/datos");
-    // console.log(response.data);
     setMyTokens(response.data);
     setLoading(false);
   };
 
   useEffect(() => {
     getMongoCryptos();
-  }, [myTokens]);
+  }, []);
 
   const handleClick = async (e) => {
-    console.log(e.target.value);
     const cmc_rank = e.target.value;
     try {
       await axios.post("/remove", {
         cmc_rank,
       });
       console.log("Removed successful");
+      getMongoCryptos();
     } catch (error) {
       console.log(error);
     }
   };
 
-  console.log(myTokens);
   return (
     <>
       <h3 className="text-gray-500">My Tokens</h3>

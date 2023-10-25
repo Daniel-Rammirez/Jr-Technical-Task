@@ -22,7 +22,7 @@ app.get("/test", (req, res) => {
 });
 
 app.post("/register", async (req, res) => {
-  const { symbol, slug, max_supply, cmc_rank, quote } = req.body;
+  const { symbol, slug, max_supply, cmc_rank, quote, id } = req.body;
   try {
     const cryptoDoc = await CryptoModel.create({
       symbol,
@@ -30,6 +30,7 @@ app.post("/register", async (req, res) => {
       max_supply,
       cmc_rank,
       quote,
+      id,
     });
     res.json(cryptoDoc);
   } catch (error) {
